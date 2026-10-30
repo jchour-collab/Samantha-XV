@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date - Bosque Encantado</title>
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <style>
+        :root {
+            --verde-bosque: #1b3b22;
+            --verde-musgo: #2d5a27;
+            --oro-magico: #dfb15b;
+            --blanco-crema: #f4f6f4;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Samantha', sans-serif;
+            background-color: var(--blanco-crema);
+            color: #333;
+            text-align: center;
+        }
+
+        /* Contenedor principal estilo tarjeta móvil */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow-x: hidden;
+        }
+
+        /* Portada con estética de bosque */
+        .hero {
+            background: linear-gradient(rgba(27, 59, 34, 0.7), rgba(27, 59, 34, 0.9)), 
+                        url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--oro-magico);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        /* Secciones informativas */
+        .section {
+            padding: 40px 20px;
+            border-bottom: 1px solid #e5eee5;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--verde-bosque);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--verde-musgo);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--verde-bosque);
+        }
+
+        /* Formulario de Confirmación */
+        form {
+            text-align: left;
+            background: #f9fbf9;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #dce7dc;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--verde-bosque);
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            margin-top: 8px;
+        }
+
+        /* Animación mágica sutil */
+        .sparkle {
+            color: var(--oro-magico);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- PORTADA -->
+        <div class="hero">
+            <span class="sparkle">✨ 🌲 ✨</span>
+            <h1>XV de Samantha</h1>
+            <p class="subtitle">Save the Date</p>
+            <p style="font-style: italic; margin-top: 30px;">Nos divertiremos en un lugar encantado y quero que seas parte de mi historia.</p>
+        </div>
+
+        <!-- CUENTA REGRESIVA O FECHA -->
+        <div class="section">
+            <h2>El Gran Día</h2>
+            <p style="font-size: 1.3rem; font-weight: 600; color: var(--verde-musgo);">SÁBADO | 5 DE DICIEMBRE</p>
+            <p>Faltan pocos días para adentrarnos en el bosque encantado.</p>
+        </div>
+
+        <!-- UBICACIÓN -->
+        <div class="section">
+            <h2>Lugar Mágico</h2>
+            <p><strong>Jardín de eventos la Corona</strong></p>
+            <p>Km 105.2, Carretera a Monjas, Ciudad de Jalapa</p>
+            <!-- Reemplaza este enlace por el de tu ubicación real -->
+            <a href="https://maps.app.goo.gl/BbzGQ1wqomKUXyz38">📍 Abrir en Google Maps</a>
+        </div>
+
+        <!-- FORMULARIO RSVP -->
+        <div class="section">
+            <h2>Confirmar Asistencia</h2>
+            <p>Por favor, ayúdanos confirmando tu asistencia antes del 15 de Noviembre.</p>
+            
+            <form id="rsvpForm" action="https://formspree.io/f/mdeelpdr" method="POST">
+                <label for="fullName">Samantha Chour:</label>
+                <input type="text" id="fullName" placeholder="Ej. María López" required>
+
+                <label>¿Podremos contar con tu encanto?</label>
+                <div class="radio-group">
+                    <input type="radio" id="asiste" name="attendance" value="Si" checked>
+                    <label for="asiste" style="display:inline; font-weight:400;">Sí, ¡allí estaré! 🎉</label><br>
+                    <input type="radio" id="noAsiste" name="attendance" value="No">
+                    <label for="noAsiste" style="display:inline; font-weight:400;">No podré asistir 😔</label>
+                </div>
+
+                
+                <button type="submit" class="btn" style="width: 100%;">Enviar Confirmación</button>
+            </form>
+            <p id="successMessage" style="color: var(--verde-musgo); font-weight: bold; margin-top: 15px;"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('fullName').value;
+            const asiste = document.querySelector('input[name="attendance"]:checked').value;
+            const dieta = document.getElementById('diet').value;
+
+            // Integración sugerida: Puedes conectar esto a Google Sheets usando un servicio como Tally.so o Formspree
+            console.log(`Datos capturados: ${nombre}, Asiste: ${asiste}, Dieta: ${dieta}`);
+
+            // Respuesta visual inmediata
+            const msg = document.getElementById('successMessage');
+            if(asiste === "Si") {
+                msg.innerText = `¡Gracias ${nombre}! Tu lugar en el bosque está reservado. ✨`;
+            } else {
+                msg.innerText = `Te extrañaremos, ${nombre}. Gracias por avisarnos.`;
+            }
+            
+            document.getElementById('rsvpForm').reset();
+        });
+    </script>
+</body>
+</html>
