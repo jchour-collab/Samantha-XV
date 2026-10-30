@@ -3,201 +3,684 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save the Date - Bosque Encantado</title>
-    <!-- Fuentes elegantes de Google Fonts -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    
+    <title>Save the Date - XV Samantha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --verde-bosque: #1b3b22;
-            --verde-musgo: #2d5a27;
-            --oro-magico: #dfb15b;
-            --blanco-crema: #f4f6f4;
+            --forest-900: #12271b;
+            --forest-800: #1a3927;
+            --forest-700: #2d5b39;
+            --gold-500: #d9b36b;
+            --gold-400: #f0d7a2;
+            --ivory: #f9f4ee;
+            --white: #ffffff;
+            --text: #224230;
+            --soft: #e9efe8;
+            --shadow: rgba(18, 39, 27, 0.18);
+            --shadow-strong: rgba(18, 39, 27, 0.28);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Samantha', sans-serif;
-            background-color: var(--blanco-crema);
-            color: #333;
-            text-align: center;
-        }
-
-        /* Contenedor principal estilo tarjeta móvil */
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #ffffff;
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            overflow-x: hidden;
+            font-family: 'Manrope', sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(217, 179, 107, 0.18), transparent 25%),
+                linear-gradient(180deg, #f3efe8 0%, #f8f5f1 100%);
+            color: var(--text);
         }
 
-        /* Portada con estética de bosque */
-        .hero {
-            background: linear-gradient(rgba(27, 59, 34, 0.7), rgba(27, 59, 34, 0.9)), 
-                        url('https://unsplash.com');
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 60px 20px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .app {
+            position: relative;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 16px 16px 50px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 660px;
+            background:
+                linear-gradient(180deg, rgba(11, 23, 16, 0.15), rgba(11, 23, 16, 0.65)),
+                url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 30px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-content {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 0.28rem;
+            text-transform: uppercase;
+            color: var(--gold-400);
+            margin-bottom: 18px;
         }
 
         h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--oro-magico);
-            letter-spacing: 2px;
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.3rem, 8vw, 5.2rem);
+            line-height: 0.9;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+            color: #f6edde;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.22);
         }
 
         .subtitle {
-            font-size: 1.1rem;
+            margin: 20px 0 0;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 300;
+            letter-spacing: 0.48rem;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.85);
         }
 
-        /* Secciones informativas */
-        .section {
-            padding: 40px 20px;
-            border-bottom: 1px solid #e5eee5;
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            color: var(--verde-bosque);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--verde-musgo);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
+        .hero-note {
+            margin: 26px auto 0;
+            max-width: 290px;
             font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.82);
+            font-weight: 500;
         }
 
-        .btn:hover {
-            background-color: var(--verde-bosque);
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 30px;
         }
 
-        /* Formulario de Confirmación */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(6px);
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--gold-500), #f5ddb6);
+            color: var(--forest-900);
+            border: none;
+            box-shadow: 0 12px 28px rgba(217, 179, 107, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .section {
+            padding: 30px 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .section h2 {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--forest-800);
+            font-weight: 600;
+        }
+
+        .chip {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(217, 179, 107, 0.14);
+            color: var(--forest-700);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12rem;
+            font-weight: 700;
+        }
+
+        .date-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(240, 215, 162, 0.18));
+            border: 1px solid rgba(29, 56, 34, 0.08);
+            border-radius: 26px;
+            padding: 20px 18px;
+            box-shadow: 0 16px 36px rgba(18, 39, 27, 0.08);
+        }
+
+        .date-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .date-day {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--forest-700);
+            font-size: 3.4rem;
+            line-height: 0.9;
+            font-weight: 700;
+        }
+
+        .date-meta {
+            font-size: 0.8rem;
+            color: var(--forest-700);
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            line-height: 1.6;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            text-align: center;
+        }
+
+        .time-box {
+            background: rgba(18, 39, 27, 0.05);
+            border-radius: 18px;
+            padding: 12px 6px;
+        }
+
+        .time-value {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--forest-900);
+        }
+
+        .time-label {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.66rem;
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+            color: var(--forest-700);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .image-card {
+            position: relative;
+            height: 210px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(17, 32, 25, 0.12);
+            transform: translateY(0);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+
+        .image-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 26px 50px rgba(17, 32, 25, 0.18);
+        }
+
+        .image-card.large {
+            grid-column: span 2;
+            height: 240px;
+        }
+
+        .image-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(18,39,27,0.1), rgba(18,39,27,0.6));
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .image-label {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            z-index: 1;
+            font-size: 0.78rem;
+            letter-spacing: 0.14rem;
+            text-transform: uppercase;
+            color: white;
+            font-weight: 700;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 14px;
+            align-items: center;
+            background: rgba(255,255,255,0.75);
+            border: 1px solid rgba(29, 56, 34, 0.07);
+            border-radius: 22px;
+            padding: 12px;
+            box-shadow: 0 14px 28px rgba(17, 32, 25, 0.06);
+        }
+
+        .info-card img {
+            width: 100%;
+            height: 110px;
+            border-radius: 18px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .info-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+            color: var(--forest-800);
+        }
+
+        .info-card p {
+            margin: 0;
+            color: rgba(34, 66, 48, 0.8);
+            line-height: 1.6;
+            font-size: 0.92rem;
+        }
+
+        .rsvp {
+            background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(234, 241, 233, 0.9));
+        }
+
         form {
-            text-align: left;
-            background: #f9fbf9;
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #dce7dc;
+            margin-top: 18px;
+            background: rgba(255,255,255,0.72);
+            border: 1px solid rgba(29, 56, 34, 0.08);
+            border-radius: 26px;
+            padding: 20px 18px;
+            box-shadow: 0 18px 34px rgba(17, 32, 25, 0.07);
         }
 
         label {
             display: block;
-            margin-top: 15px;
-            font-weight: 600;
-            color: var(--verde-bosque);
+            margin: 14px 0 8px;
+            font-size: 0.8rem;
+            color: var(--forest-700);
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-weight: 800;
         }
 
-        input[type="text"], select {
+        input[type="text"],
+        input[type="email"],
+        select {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
+            border: 1px solid rgba(29,56,34,0.12);
+            background: rgba(255,255,255,0.9);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 14px 16px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .radio-group {
-            margin-top: 8px;
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            border-color: rgba(217, 179, 107, 0.8);
+            box-shadow: 0 0 0 4px rgba(217, 179, 107, 0.12);
         }
 
-        /* Animación mágica sutil */
-        .sparkle {
-            color: var(--oro-magico);
-            font-size: 1.5rem;
+        .radio-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: rgba(18, 39, 27, 0.04);
+            border: 1px solid rgba(18,39,27,0.05);
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .radio-option input {
+            accent-color: var(--forest-700);
+            width: 18px;
+            height: 18px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 18px;
+            border: none;
+            border-radius: 18px;
+            padding: 15px 18px;
+            background: linear-gradient(135deg, var(--forest-700), var(--forest-800));
+            color: var(--white);
+            font-size: 0.78rem;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 18px 26px rgba(18,39,27,0.18);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 30px rgba(18,39,27,0.2);
+        }
+
+        .success-message {
+            min-height: 24px;
+            margin-top: 16px;
+            font-weight: 800;
+            color: var(--forest-700);
+            text-align: center;
+        }
+
+        @media (max-width: 420px) {
+            .app {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .date-main {
+                align-items: center;
+            }
+
+            .date-day {
+                font-size: 2.8rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .image-card.large {
+                grid-column: span 1;
+            }
+
+            .info-card {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <!-- PORTADA -->
-        <div class="hero">
-            <span class="sparkle">✨ 🌲 ✨</span>
-            <h1>XV de Samantha</h1>
-            <p class="subtitle">Save the Date</p>
-            <p style="font-style: italic; margin-top: 30px;">Nos divertiremos en un lugar encantado y quero que seas parte de mi historia.</p>
-        </div>
-
-        <!-- CUENTA REGRESIVA O FECHA -->
-        <div class="section">
-            <h2>El Gran Día</h2>
-            <p style="font-size: 1.3rem; font-weight: 600; color: var(--verde-musgo);">SÁBADO | 5 DE DICIEMBRE</p>
-            <p>Faltan pocos días para adentrarnos en el bosque encantado.</p>
-        </div>
-
-        <!-- UBICACIÓN -->
-        <div class="section">
-            <h2>Lugar Mágico</h2>
-            <p><strong>Jardín de eventos la Corona</strong></p>
-            <p>Km 105.2, Carretera a Monjas, Ciudad de Jalapa</p>
-            <!-- Reemplaza este enlace por el de tu ubicación real -->
-            <a href="https://maps.app.goo.gl/BbzGQ1wqomKUXyz38">📍 Abrir en Google Maps</a>
-        </div>
-
-        <!-- FORMULARIO RSVP -->
-        <div class="section">
-            <h2>Confirmar Asistencia</h2>
-            <p>Por favor, ayúdanos confirmando tu asistencia antes del 15 de Noviembre.</p>
-            
-            <form id="rsvpForm" action="https://formspree.io/f/mdeelpdr" method="POST">
-                <label for="fullName">Samantha Chour:</label>
-                <input type="text" id="fullName" placeholder="Ej. María López" required>
-
-                <label>¿Podremos contar con tu encanto?</label>
-                <div class="radio-group">
-                    <input type="radio" id="asiste" name="attendance" value="Si" checked>
-                    <label for="asiste" style="display:inline; font-weight:400;">Sí, ¡allí estaré! 🎉</label><br>
-                    <input type="radio" id="noAsiste" name="attendance" value="No">
-                    <label for="noAsiste" style="display:inline; font-weight:400;">No podré asistir 😔</label>
+    <div class="app">
+        <div class="card">
+            <header class="hero">
+                <div class="topbar">
+                    <span class="badge">XV • Samantha</span>
+                    <span>🌿</span>
                 </div>
 
-                
-                <button type="submit" class="btn" style="width: 100%;">Enviar Confirmación</button>
-            </form>
-            <p id="successMessage" style="color: var(--verde-musgo); font-weight: bold; margin-top: 15px;"></p>
+                <div class="hero-content">
+                    <span class="eyebrow">Save the date</span>
+                    <h1>Samantha</h1>
+                    <p class="subtitle">XV años</p>
+                    <p class="hero-note">Te invito a celebrar un día lleno de magia, música y recuerdos inolvidables en el bosque encantado.</p>
+
+                    <div class="hero-cta">
+                        <a href="#rsvp" class="cta-btn primary">Confirmar</a>
+                        <a href="#details" class="cta-btn">Detalles</a>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section class="section" id="details">
+                    <div class="section-header">
+                        <h2>El gran día</h2>
+                        <span class="chip">12/05</span>
+                    </div>
+
+                    <div class="date-box">
+                        <div class="date-main">
+                            <div class="date-day">05</div>
+                            <div class="date-meta">
+                                <div>Diciembre</div>
+                                <div>2026</div>
+                            </div>
+                        </div>
+
+                        <div class="countdown">
+                            <div class="time-box">
+                                <span class="time-value" id="days">00</span>
+                                <span class="time-label">Días</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-value" id="hours">00</span>
+                                <span class="time-label">Hrs</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-value" id="minutes">00</span>
+                                <span class="time-label">Min</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-value" id="seconds">00</span>
+                                <span class="time-label">Seg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery">
+                        <div class="image-card large">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Decoración de fiesta">
+                            <span class="image-label">Mágico</span>
+                        </div>
+                        <div class="image-card">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Boda bosque">
+                            <span class="image-label">Bosque</span>
+                        </div>
+                        <div class="image-card">
+                            <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=800&q=80" alt="Celebración elegante">
+                            <span class="image-label">Ritmo</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <div class="section-header">
+                        <h2>Detalles</h2>
+                        <span class="chip">Invitación</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <article class="info-card">
+                            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80" alt="Lugar del evento">
+                            <div>
+                                <h3>Jardín de Eventos La Corona</h3>
+                                <p>Km 105.2, Carretera a Monjas, Ciudad de Jalapa</p>
+                            </div>
+                        </article>
+
+                        <article class="info-card">
+                            <img src="https://images.unsplash.com/photo-1511291240777-7f7792a4c1d7?auto=format&fit=crop&w=900&q=80" alt="Hora del evento">
+                            <div>
+                                <h3>Hora</h3>
+                                <p>Inicia a las 7:00 PM con bienvenida, música y una noche inolvidable.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="section rsvp" id="rsvp">
+                    <div class="section-header">
+                        <h2>Confirmar</h2>
+                        <span class="chip">RSVP</span>
+                    </div>
+
+                    <form id="rsvpForm" action="https://formspree.io/f/mdeelpdr" method="POST">
+                        <label for="fullName">Nombre</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Ej. María López" required>
+
+                        <label>¿Asistirás?</label>
+                        <div class="radio-list">
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="Si" checked>
+                                <span>Sí, allí estaré 🎉</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="No">
+                                <span>No podré asistir 😔</span>
+                            </label>
+                        </div>
+
+                        <label for="message">Mensaje especial</label>
+                        <input type="text" id="message" name="message" placeholder="Feliz cumple, Samantha...">
+
+                        <button type="submit" class="submit-btn">Enviar confirmación</button>
+                        <div id="successMessage" class="success-message" aria-live="polite"></div>
+                    </form>
+                </section>
+            </main>
         </div>
     </div>
 
     <script>
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('fullName').value;
-            const asiste = document.querySelector('input[name="attendance"]:checked').value;
-            const dieta = document.getElementById('diet').value;
+        const targetDate = new Date('2026-12-05T19:00:00');
 
-            // Integración sugerida: Puedes conectar esto a Google Sheets usando un servicio como Tally.so o Formspree
-            console.log(`Datos capturados: ${nombre}, Asiste: ${asiste}, Dieta: ${dieta}`);
+        function updateCountdown() {
+            const now = new Date();
+            const difference = targetDate - now;
 
-            // Respuesta visual inmediata
-            const msg = document.getElementById('successMessage');
-            if(asiste === "Si") {
-                msg.innerText = `¡Gracias ${nombre}! Tu lugar en el bosque está reservado. ✨`;
-            } else {
-                msg.innerText = `Te extrañaremos, ${nombre}. Gracias por avisarnos.`;
+            if (difference <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
             }
-            
-            document.getElementById('rsvpForm').reset();
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / (1000 * 60)) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nombre = document.getElementById('fullName').value.trim() || 'Amiga';
+            const asiste = document.querySelector('input[name="attendance"]:checked').value;
+            const msg = document.getElementById('successMessage');
+
+            if (asiste === 'Si') {
+                msg.textContent = `¡Gracias, ${nombre}! Tu lugar en el bosque está reservado ✨`;
+            } else {
+                msg.textContent = `Te extrañaremos, ${nombre}. Gracias por avisarnos 💛`;
+            }
+
+            this.reset();
         });
     </script>
 </body>
